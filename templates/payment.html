@@ -1,13 +1,21 @@
+<!DOCTYPE html>
 <html>
-<head><title>Pay via UPI</title></head>
+<head>
+  <title>Pay via UPI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
 <body>
-  <h2>Pay ₹100 to continue</h2>
-  <p>UPI ID: yourname@upi</p>
-  <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=upi://pay?pa=yourname@upi&pn=Your+Name&am=100&cu=INR" width="250">
-  <br><br>
-  <form action="/verify" method="post">
-    <input name="utr" placeholder="Enter UTR if auto-check fails" required>
-    <button type="submit">Verify Payment</button>
-  </form>
+  <div class="container">
+    <h1>Pay ₹{{ amount }} to continue</h1>
+    <p><strong>UPI ID:</strong> {{ upi_id }}</p>
+    
+    <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{ qr_link | urlencode }}" width="250" alt="UPI QR Code">
+    
+    <form action="/verify" method="POST">
+      <label>Enter UTR / Transaction ID:</label>
+      <input type="text" name="utr" placeholder="e.g. 321XXXXXXXX" required>
+      <button type="submit">Verify Payment</button>
+    </form>
+  </div>
 </body>
 </html>
