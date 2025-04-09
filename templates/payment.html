@@ -1,0 +1,13 @@
+<html>
+<head><title>Pay via UPI</title></head>
+<body>
+  <h2>Pay ₹100 to continue</h2>
+  <p>UPI ID: yourname@upi</p>
+  <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=upi://pay?pa=yourname@upi&pn=Your+Name&am=100&cu=INR" width="250">
+  <br><br>
+  <form action="/verify" method="post">
+    <input name="utr" placeholder="Enter UTR if auto-check fails" required>
+    <button type="submit">Verify Payment</button>
+  </form>
+</body>
+</html>
